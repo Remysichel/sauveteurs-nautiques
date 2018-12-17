@@ -1,58 +1,112 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
-  <% end %>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <% if user_signed_in? %>
-
-      <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-
-      <!-- Avatar with dropdown menu -->
+  <!-- JOBSEEKER NAVBAR -->
+  <% if jobseeker_signed_in? %>
+    <!-- Left Navigation -->
+    <div class="navbar-wagon-left hidden-xs">
       <div class="navbar-wagon-item">
+        <!-- Avatar -->
+        <%= image_tag "https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu" %>
+        <!-- Menu -->
+        <%= link_to "Rechercher", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Candidatures", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Deconnexion", destroy_jobseeker_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+      </div>
+    </div>
+    <!-- LOGO -->
+    <div class="navbar-wagon-right hidden-xs">
+      <a href="/" class="navbar-wagon-brand">
+        <img src="https://i.etsystatic.com/16575763/r/il/e9aa6e/1640248840/il_570xN.1640248840_a4lh.jpg" alt="logo">
+      </a>
+    </div>
+
+    <!-- Dropdown list MOBILE -->
+    <div class="navbar-wagon-left">
+      <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu navbar-wagon-dropdown-menu">
+            <li><a href="#">Rechercher</a></li>
+            <li><a href="#">Candidatures</a></li>
+            <li><a href="#">Profile</a></li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
+              <%= link_to "Deconnexion", destroy_jobseeker_session_path, method: :delete, class: "navbar-wagon-link" %>
             </li>
           </ul>
         </div>
       </div>
-    <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
-  </div>
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
     </div>
-  </div>
+    <div class="navbar-wagon-right">
+      <!-- LOGO -->
+      <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
+        <a href="/" class="navbar-wagon-brand">
+          <img src="https://i.etsystatic.com/16575763/r/il/e9aa6e/1640248840/il_570xN.1640248840_a4lh.jpg" alt="logo">
+        </a>
+      </div>
+    </div>
+
+  <!-- COMPANY NAVBAR -->
+  <% elsif company_signed_in? %>
+
+    <!-- LOGO -->
+    <div class="navbar-wagon-left">
+      <a href="/" class="navbar-wagon-brand">
+        <img src="https://i.etsystatic.com/16575763/r/il/e9aa6e/1640248840/il_570xN.1640248840_a4lh.jpg" alt="logo">
+      </a>
+    </div>
+
+    <div class="navbar-wagon-right hidden-xs">
+      <div class="navbar-wagon-item">
+        <!-- Menu -->
+        <%= link_to "Offres", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Deconnexion", destroy_company_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+        <!-- Avatar -->
+        <%= image_tag "https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu" %>
+      </div>
+    </div>
+    <!-- Dropdown list MOBILE -->
+    <div class="navbar-wagon-item hidden-sm hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Offres</a></li>
+          <li><a href="#">Profiles</a></li>
+          <li>
+            <%= link_to "Deconnexion", destroy_company_session_path, method: :delete, class: "navbar-wagon-link" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+  <!-- NO CONNECTED NAVBAR -->
+  <% else %>
+    <!-- Login link (Jobseeker) -->
+    <div class="hidden-xs">
+      <%= link_to t(".sign_in", default: "Espace Sauveteur"), new_jobseeker_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    </div>
+    <div class="hidden-sm hidden-md hidden-lg">
+      <%= link_to new_jobseeker_session_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+        <i class="fas fa-user"></i>
+      <% end %>
+    </div>
+    <!-- Logo -->
+    <div>
+      <a href="/" class="navbar-wagon-brand">
+        <img src="https://i.etsystatic.com/16575763/r/il/e9aa6e/1640248840/il_570xN.1640248840_a4lh.jpg" alt="logo">
+      </a>
+    </div>
+    <!-- Login link (Company) -->
+    <div class="hidden-xs">
+      <%= link_to t(".sign_in", default: "Espace Société"), new_company_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    </div>
+    <div class="hidden-sm hidden-md hidden-lg">
+      <%= link_to new_company_session_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+        <i class="fas fa-user-tie"></i>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 

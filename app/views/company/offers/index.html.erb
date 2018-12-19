@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="text-center">
+    <h1><%= current_company.name %></h1>
+    <h4><%= current_company.sector %></h4>
+    <p><%= current_company.description %></p>
+  </div>
+
+  <div>
+    <% if @jobs != [] %>
+      <p>Liste de vos offres d'emploies</p>
+      <% @jobs.each do |job| %>
+        <ul>
+          <li><%= link_to job.job_name, company_offer_path(job.id) %></li>
+        </ul>
+      <% end %>
+    <% end %>
+
+    <% if @formations != [] %>
+    <p>Liste de vos formations</p>
+      <% @formations.each do |formation| %>
+        <ul>
+          <li><%= link_to formation.formation_name, company_offer_path(formation.id) %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Creer une nouvelle offre
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <p>Offre d'emploi</p>
+            </div>
+            <div>
+              <p>Offre de formation</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= link_to "Acceuil", root_path, class: "btn btn-default" %>
+  </div>
+</div>

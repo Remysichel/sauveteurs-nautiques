@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="text_center">
+    <% if  @offer.job == true %>
+      <h2><%= @offer.job_name %> #<%= @offer.id %></h2>
+      <h4><%= @offer.job_description%></h4>
+    <% end %>
+
+    <% if @offer.job == false %>
+      <h2><%= @offer.formation_name %> #<%= @offer.id %></h2>
+      <h4><%= @offer.formation_description %></h4>
+    <% end %>
+  </div>
+
+  <div>
+    <% @candidacies.each do |candidacy| %>
+      <ul>
+        <li><%= candidacy.jobseeker.first_name %>
+          <%= candidacy.jobseeker.last_name %> -
+          <%= candidacy.jobseeker.profession %> -
+          <%= candidacy.jobseeker.address %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+
+  <%= link_to 'Retour', company_offers_path, class: "btn btn-primary" %>
+</div>

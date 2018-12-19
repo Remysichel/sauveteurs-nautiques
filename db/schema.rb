@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_12_16_160723) do
   end
 
   create_table "offers", force: :cascade do |t|
+    t.boolean "job"
     t.string "required_profile"
     t.datetime "date_start"
     t.string "formation_name"

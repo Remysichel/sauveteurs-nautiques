@@ -1,6 +1,7 @@
 class CreateOffers < ActiveRecord::Migration[5.2]
   def change
     create_table :offers do |t|
+      t.boolean :job
       t.string :required_profile
       t.datetime :date_start
       t.string :formation_name

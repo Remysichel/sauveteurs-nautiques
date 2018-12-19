@@ -10,15 +10,9 @@
         <!-- Menu -->
         <%= link_to "Rechercher", "#", class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Candidatures", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Profil", edit_jobseeker_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Deconnexion", destroy_jobseeker_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
       </div>
-    </div>
-    <!-- LOGO -->
-    <div class="navbar-wagon-right hidden-xs">
-      <a href="/" class="navbar-wagon-brand">
-        <img src="https://i.etsystatic.com/16575763/r/il/e9aa6e/1640248840/il_570xN.1640248840_a4lh.jpg" alt="logo">
-      </a>
     </div>
 
     <!-- Dropdown list MOBILE -->
@@ -29,7 +23,7 @@
           <ul class="dropdown-menu navbar-wagon-dropdown-menu">
             <li><a href="#">Rechercher</a></li>
             <li><a href="#">Candidatures</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><%= link_to "Profil", edit_jobseeker_registration_path %></li>
             <li>
               <%= link_to "Deconnexion", destroy_jobseeker_session_path, method: :delete, class: "navbar-wagon-link" %>
             </li>
@@ -46,6 +40,16 @@
       </div>
     </div>
 
+    <!-- LOGO -->
+    <div class="navbar-wagon-right hidden-xs">
+      <div class="navbar-wagon-item">
+        <a href="/" class="navbar-wagon-brand">
+          <img src="https://i.etsystatic.com/16575763/r/il/e9aa6e/1640248840/il_570xN.1640248840_a4lh.jpg" alt="logo">
+        </a>
+      </div>
+    </div>
+
+
   <!-- COMPANY NAVBAR -->
   <% elsif company_signed_in? %>
 
@@ -60,7 +64,7 @@
       <div class="navbar-wagon-item">
         <!-- Menu -->
         <%= link_to "Offres", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Profil", edit_company_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Deconnexion", destroy_company_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
         <!-- Avatar -->
         <%= image_tag "https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu" %>
@@ -72,7 +76,7 @@
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="#">Offres</a></li>
-          <li><a href="#">Profiles</a></li>
+          <li><%= link_to "Profil", edit_company_registration_path %></li>
           <li>
             <%= link_to "Deconnexion", destroy_company_session_path, method: :delete, class: "navbar-wagon-link" %>
           </li>

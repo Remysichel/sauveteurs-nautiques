@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :companies
-  devise_for :jobseekers
+  devise_for :companies,  controllers: {
+    sessions: 'companies/sessions',
+    registrations: 'companies/registrations'
+  }
+  devise_for :jobseekers,  controllers: {
+    sessions: 'jobseekers/sessions',
+    registrations: 'jobseekers/registrations'
+  }
+
   root to: 'pages#home'
 
   resources :offers, only: [:index, :show] do

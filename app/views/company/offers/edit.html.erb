@@ -1,0 +1,20 @@
+<div class="container">
+  <%= simple_form_for [:company, @offer] do |f| %>
+    <% if @offer.job == true %>
+      <%= f.input :job_name %>
+      <%= f.input :job_description %>
+      <%= f.input :required_profile %>
+      <%= f.input :contract %>
+      <%= f.input :date_start, as: :date %>
+    <% end %>
+    <% if @offer.job == false %>
+      <%= f.input :formation_name %>
+      <%= f.input :formation_description %>
+      <%= f.input :required_profile %>
+      <%= f.input :degree %>
+      <%= f.input :price %>
+      <%= f.input :date_start, as: :date %>
+    <% end %>
+      <%= f.submit 'Save', class: "btn btn-primary btn-block" %>
+  <% end %>
+</div>

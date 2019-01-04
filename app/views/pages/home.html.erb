@@ -1,4 +1,24 @@
 <div class="container text-center">
   <h1>Sauveteurs Nautiques</h1>
   <p>Plateforme Sauveteur/Formateur/Employeur</p>
+
+  <div>
+    <% if @jobs != [] %>
+      <h4>Liste des offres d'emploies :</h4>
+      <% @jobs.each do |job| %>
+        <ul>
+          <li><%= link_to job.job_name, offer_path(job.id) %></li>
+        </ul>
+      <% end %>
+    <% end %>
+
+    <% if @formations != [] %>
+    <h4>Liste des formations :</h4>
+      <% @formations.each do |formation| %>
+        <ul>
+          <li><%= link_to formation.formation_name, offer_path(formation.id) %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
 </div>

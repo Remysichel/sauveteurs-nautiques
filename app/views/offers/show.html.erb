@@ -1,0 +1,11 @@
+<div class="container">
+  <h1><%= @offer.job_name || @offer.formation_name %></h1>
+  <h4><%= @offer.company.name %></h4>
+  <p><%= @offer.job_description || @offer.formation_description %></p>
+  <p><%= @offer.degree || @offer.contract %></p>
+  <p><%= @offer.price %>€</p>
+  <p><%= @offer.required_profile %></p>
+  <p><%= @offer.date_start %></p>
+
+  <%= link_to "Retour", root_path, class: "btn btn-primary" %>
+</div>

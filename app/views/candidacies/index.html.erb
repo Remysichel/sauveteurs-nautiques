@@ -1,0 +1,12 @@
+<div class="container">
+  <div>
+    <% if @candidacies != [] %>
+      <h4>Mes candidatures :</h4>
+      <% @candidacies.each do |candidacy| %>
+        <ul>
+          <li><%= link_to candidacy.offer.job_name || candidacy.offer.formation_name, candidacy_path(candidacy.id) %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>

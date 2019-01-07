@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><%= @candidacy.offer.job_name || @candidacy.offer.formation_name  %></h1>
+  <h4><%= @candidacy.offer.job_description || @candidacy.offer.job_formation %></h4>
+  <p>
+    <strong><%= @candidacy.jobseeker.genre %></strong> <%= @candidacy.jobseeker.first_name %> <%= @candidacy.jobseeker.last_name %>
+  </p>
+  <p><%= @candidacy.jobseeker.profession %></p>
+  <p><%= @candidacy.jobseeker.address %></p>
+  <p><%= @candidacy.jobseeker.phone_number %></p>
+  <p><%= @candidacy.jobseeker.email %></p>
+
+  <p><strong><%= link_to "Contacter", href="mailto:#{@candidacy.jobseeker.email}"%></strong></p>
+  <%= link_to "Retour", company_offer_path(@candidacy.offer.id) %>
+</div>

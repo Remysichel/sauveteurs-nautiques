@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   namespace :company do
     resources :offers
+    resources :candidacies, only: [:show]
   end
 
 end

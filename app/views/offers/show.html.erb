@@ -7,5 +7,8 @@
   <p><%= @offer.required_profile %></p>
   <p><%= @offer.date_start %></p>
 
+  <% if jobseeker_signed_in? %>
+    <%= link_to "Candidater", offer_candidacies_path(@offer, jobseeker_id: current_jobseeker.id), method: :post %>
+  <% end %>
   <%= link_to "Retour", root_path, class: "btn btn-primary" %>
 </div>

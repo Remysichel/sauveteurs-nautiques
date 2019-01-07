@@ -1,23 +1,19 @@
 <div class="container">
   <div class="text_center">
-    <% if  @offer.job == true %>
-      <h2><%= @offer.job_name %> #<%= @offer.id %></h2>
-      <h4><%= @offer.job_description%></h4>
-    <% end %>
-
-    <% if @offer.job == false %>
-      <h2><%= @offer.formation_name %> #<%= @offer.id %></h2>
-      <h4><%= @offer.formation_description %></h4>
-    <% end %>
+    <h2><%= @offer.job_name || @offer.formation_name %> #<%= @offer.id %></h2>
+    <h4><%= @offer.job_description || @offer.formation_description %></h4>
   </div>
 
   <div>
     <% @candidacies.each do |candidacy| %>
       <ul>
-        <li><%= candidacy.jobseeker.first_name %>
-          <%= candidacy.jobseeker.last_name %> -
-          <%= candidacy.jobseeker.profession %> -
-          <%= candidacy.jobseeker.address %>
+        <li>
+          <%= link_to company_candidacy_path(candidacy.id) do %>
+            <%= candidacy.jobseeker.first_name %>
+            <%= candidacy.jobseeker.last_name %> -
+            <%= candidacy.jobseeker.profession %> -
+            <%= candidacy.jobseeker.address %>
+          <% end %>
         </li>
       </ul>
     <% end %>

@@ -11,6 +11,7 @@ class CandidaciesController < ApplicationController
 
   def create
     @candidacy = Candidacy.new(candidacy_params)
+    @candidacy.jobseeker_id = current_jobseeker.id
     @candidacy.save
     flash[:notice] = "Candidature envoyée !"
     redirect_to candidacies_path

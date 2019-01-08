@@ -1,14 +1,34 @@
-<div class="container">
-  <h1><%= @offer.job_name || @offer.formation_name %></h1>
-  <h4><%= @offer.company.name %></h4>
-  <p><%= @offer.job_description || @offer.formation_description %></p>
-  <p><%= @offer.degree || @offer.contract %></p>
-  <p><%= @offer.price %>€</p>
-  <p><%= @offer.required_profile %></p>
-  <p><%= @offer.date_start %></p>
-
-  <% if jobseeker_signed_in? %>
-    <%= link_to "Candidater", offer_candidacies_path(@offer, jobseeker_id: current_jobseeker.id), method: :post %>
+<% if @offer.job == true %>
+  <div class="wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/5399/beach-sand-lifeguard.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+    <div class="container text-center">
+      <h1><%= @offer.job_name %></h1>
+      <h4><%= @offer.company.name %></h4>
+    </div>
+  </div>
+  <div class="container text-center">
+      <p><%= @offer.job_description %></p>
+      <p><%= @offer.contract %></p>
+      <p><%= @offer.required_profile %></p>
+      <p><%= @offer.date_start %></p>
+  </div>
+<% else %>
+  <div class="wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/2687/sea-beach-sand-ocean.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+    <div class="container text-center">
+      <h1><%= @offer.formation_name %></h1>
+      <h4><%= @offer.company.name %></h4>
+    </div>
+  </div>
+  <div class="container text-center">
+      <p><%= @offer.formation_description %></p>
+      <p><%= @offer.degree %></p>
+      <p><%= @offer.price %>€</p>
+      <p><%= @offer.required_profile %></p>
+      <p><%= @offer.date_start %></p>
+  </div>
+<% end %>
+<div class="container text-center">
+  <% unless company_signed_in? %>
+    <p><%= link_to "Candidater", offer_candidacies_path(@offer), method: :post, class: "btn btn-secondary" %></p>
   <% end %>
-  <%= link_to "Retour", root_path, class: "btn btn-primary" %>
+  <p><%= link_to "Retour", root_path, class: "btn btn-primary" %></p>
 </div>

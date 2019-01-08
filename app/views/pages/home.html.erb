@@ -1,24 +1,45 @@
-<div class="container text-center">
-  <h1>Sauveteurs Nautiques</h1>
-  <p>Plateforme Sauveteur/Formateur/Employeur</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.pexels.com/photos/1751128/pexels-photo-1751128.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+  <div class="banner-content">
+    <h1>Sauveteurs Nautiques</h1>
+    <p>Plateforme Sauveteur/Formateur/Employeur</p>
+  </div>
+</div>
 
-  <div>
+<div class="container text-center">
+  <div class="row">
     <% if @jobs != [] %>
-      <h4>Liste des offres d'emploies :</h4>
-      <% @jobs.each do |job| %>
-        <ul>
-          <li><%= link_to job.job_name, offer_path(job.id) %></li>
-        </ul>
+      <h2>Offres d'emploies</h2>
+      <% @jobs.sample(6).each do |job| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= link_to offer_path(job.id) do %>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/5399/beach-sand-lifeguard.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+              <div class="card-category">Emploi</div>
+              <div class="card-description">
+                <h2><%= job.job_name %></h2>
+              </div>
+              <div class="card-user"><%= job.company.name %></div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
 
     <% if @formations != [] %>
-    <h4>Liste des formations :</h4>
-      <% @formations.each do |formation| %>
-        <ul>
-          <li><%= link_to formation.formation_name, offer_path(formation.id) %></li>
-        </ul>
+    <h2>Formations</h2>
+      <% @formations.sample(6).each do |formation| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= link_to offer_path(formation.id) do %>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/2687/sea-beach-sand-ocean.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+              <div class="card-category">Formation</div>
+              <div class="card-description">
+                <h2><%= formation.formation_name %></h2>
+              </div>
+              <div class="card-user"><%= formation.company.name %></div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
   </div>
 </div>
+

@@ -4,28 +4,52 @@
     <h4><%= current_company.sector %></h4>
     <p><%= current_company.description %></p>
   </div>
-
+  <br>
   <div>
     <% if @jobs != [] %>
-      <p>Liste de vos offres d'emploies</p>
-      <% @jobs.each do |job| %>
-        <ul>
-          <li><%= link_to job.job_name, company_offer_path(job.id) %></li>
-        </ul>
-      <% end %>
+      <h4>Liste de vos offres d'emploies</h4>
+      <div class="dashbord">
+        <% @jobs.each do |job| %>
+          <%= link_to company_offer_path(job.id) do %>
+            <div class="message">
+              <div class="message-name">
+                <h3><strong><%= job.job_name %></strong></h3>
+              </div>
+              <div class="message-body hidden-xs">
+                <p><%= job.job_description %></p>
+              </div>
+              <div class="message-status">
+                <p><%= job.contract %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
 
     <% if @formations != [] %>
-    <p>Liste de vos formations</p>
-      <% @formations.each do |formation| %>
-        <ul>
-          <li><%= link_to formation.formation_name, company_offer_path(formation.id) %></li>
-        </ul>
-      <% end %>
+      <h4>Liste de vos formations</h4>
+      <div class="dashbord">
+        <% @formations.each do |formation| %>
+          <%= link_to company_offer_path(formation.id) do %>
+            <div class="message">
+              <div class="message-name">
+                <h3><strong><%= formation.formation_name %></strong></h3>
+              </div>
+              <div class="message-body hidden-xs">
+                <p><%= formation.formation_description %></p>
+              </div>
+              <div class="message-status">
+                <p><%= formation.degree %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-
-  <div>
+  <br>
+  <div class="text-center">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       Creer une nouvelle offre
@@ -56,7 +80,8 @@
       </div>
     </div>
   </div>
-  <div>
+  <br>
+  <div class=text-center>
     <%= link_to "Acceuil", root_path, class: "btn btn-default" %>
   </div>
 </div>

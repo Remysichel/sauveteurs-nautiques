@@ -4,20 +4,30 @@
     <h4><%= @offer.job_description || @offer.formation_description %></h4>
   </div>
 
-  <div>
+  <div class="dashbord">
     <% @candidacies.each do |candidacy| %>
-      <ul>
-        <li>
-          <%= link_to company_candidacy_path(candidacy.id) do %>
-            <%= candidacy.jobseeker.first_name %>
-            <%= candidacy.jobseeker.last_name %> -
-            <%= candidacy.jobseeker.profession %> -
-            <%= candidacy.jobseeker.address %>
-          <% end %>
-        </li>
-      </ul>
+      <%= link_to company_candidacy_path(candidacy.id) do %>
+        <div class="message">
+          <img class="avatar-large" src="https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png">
+          <div class="message-name">
+            <h3><strong><%= candidacy.jobseeker.first_name %>
+            <%= candidacy.jobseeker.last_name %></strong></h3>
+          </div>
+          <div class="message-body hidden-xs">
+            <p>
+              <%= candidacy.jobseeker.profession %>
+              -
+              <%= candidacy.jobseeker.address %>
+            </p>
+          </div>
+          <div class="message-status">
+            <p>Contacter</p>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
-
-  <%= link_to 'Retour', company_offers_path, class: "btn btn-primary" %>
+  <div class="text-center">
+    <%= link_to 'Retour', company_offers_path, class: "btn btn-primary" %>
+  </div>
 </div>

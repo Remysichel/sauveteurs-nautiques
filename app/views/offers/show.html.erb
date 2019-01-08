@@ -30,5 +30,5 @@
   <% unless company_signed_in? %>
     <p><%= link_to "Candidater", offer_candidacies_path(@offer), method: :post, class: "btn btn-secondary" %></p>
   <% end %>
-  <p><%= link_to "Retour", root_path, class: "btn btn-primary" %></p>
+  <p><%= link_to "Retour", offers_path, class: "btn btn-primary" %></p>
 </div>

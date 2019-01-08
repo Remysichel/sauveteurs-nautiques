@@ -1,6 +1,8 @@
-<div class="container">
-  <h4><%= @candidacy.offer.job_name || @candidacy.offer.formation_name %></h4>
-  <h6><%= @candidacy.offer.company.name %></h6>
+<div class="page">
+  <div class="container">
+    <h4><%= @candidacy.offer.job_name || @candidacy.offer.formation_name %></h4>
+    <h6><%= @candidacy.offer.company.name %></h6>
 
-  <%= link_to "Retour", candidacies_path, class: "btn btn-primary" %>
+    <%= link_to "Retour", candidacies_path, class: "btn btn-primary" %>
+  </div>
 </div>

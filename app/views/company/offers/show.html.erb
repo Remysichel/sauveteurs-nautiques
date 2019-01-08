@@ -28,6 +28,7 @@
     <% end %>
   </div>
   <div class="text-center">
+    <%= link_to 'Supprimer', company_offer_path(@offer), method: :delete, class: "btn btn-default" %>
     <%= link_to 'Retour', company_offers_path, class: "btn btn-primary" %>
   </div>
 </div>

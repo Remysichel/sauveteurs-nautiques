@@ -9,6 +9,6 @@
   <p><%= @candidacy.jobseeker.phone_number %></p>
   <p><%= @candidacy.jobseeker.email %></p>
 
-  <p><strong><%= link_to "Contacter", href="mailto:#{@candidacy.jobseeker.email}"%></strong></p>
-  <%= link_to "Retour", company_offer_path(@candidacy.offer.id) %>
+  <p><strong><%= link_to "Contacter", href="mailto:#{@candidacy.jobseeker.email}", class: 'btn btn-primary'%></strong></p>
+  <%= link_to "Retour", company_offer_path(@candidacy.offer.id), class: 'btn btn-default' %>
 </div>

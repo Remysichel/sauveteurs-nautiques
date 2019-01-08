@@ -1,0 +1,87 @@
+<div class="container">
+  <h1>Toutes les offres</h1>
+
+  <%= form_tag offers_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Trouver une offre"
+    %>
+  <% end %>
+<!-- Resultat recherche -->
+
+  <div class="row">
+    <% if @results != nil %>
+      <% @results.each do |result| %>
+        <% if result.job? %>
+          <div class="col-xs-12 col-sm-4">
+            <%= link_to offer_path(result.id) do %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/5399/beach-sand-lifeguard.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+                <div class="card-category">Emploi</div>
+                <div class="card-description">
+                  <h2><%= result.job_name %></h2>
+                  <p><%= result.company.place %></p>
+                </div>
+                <div class="card-user"><%= result.company.name %></div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="col-xs-12 col-sm-4">
+            <%= link_to offer_path(result.id) do %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/2687/sea-beach-sand-ocean.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+                <div class="card-category">Formation</div>
+                <div class="card-description">
+                  <h2><%= result.formation_name %></h2>
+                  <p><%= result.company.place %></p>
+                </div>
+                <div class="card-user"><%= result.company.name %></div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+<!-- Toutes les offres -->
+
+  <div class="row">
+    <% if @jobs != nil %>
+      <h2 class="text-center">Offres d'emploies</h2>
+      <% @jobs.each do |job| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= link_to offer_path(job.id) do %>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/5399/beach-sand-lifeguard.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+              <div class="card-category">Emploi</div>
+              <div class="card-description">
+                <h2><%= job.job_name %></h2>
+                <p><%= job.company.place %></p>
+              </div>
+              <div class="card-user"><%= job.company.name %></div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <% if @formations != nil %>
+    <h2 class="text-center">Formations</h2>
+      <% @formations.each do |formation| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= link_to offer_path(formation.id) do %>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/2687/sea-beach-sand-ocean.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');">
+              <div class="card-category">Formation</div>
+              <div class="card-description">
+                <h2><%= formation.formation_name %></h2>
+                <p><%= formation.company.place %></p>
+              </div>
+              <div class="card-user"><%= formation.company.name %></div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

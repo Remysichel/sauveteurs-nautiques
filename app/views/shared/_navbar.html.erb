@@ -8,7 +8,7 @@
         <!-- Avatar -->
         <%= image_tag "https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu" %>
         <!-- Menu -->
-        <%= link_to "Rechercher", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Rechercher", offers_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Candidatures", candidacies_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Profil", edit_jobseeker_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Deconnexion", destroy_jobseeker_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
